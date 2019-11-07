@@ -1,0 +1,334 @@
+openapi: 3.0.0
+info:
+  title: ena-rpa
+  version: '1.0'
+  description: 恵那市　音声告知機 RPA用API
+  contact:
+    name: masashi mizuno
+    url: 'https://goldkey.co.jp'
+    email: m-mizuno@goldkey.co.jp
+servers:
+  - url: 'http://localhost:3000'
+paths:
+  '/schedule/{id}':
+    parameters:
+      - type: string
+        name: id
+        in: path
+        required: true
+    get:
+      summary: スケジュール詳細
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ScheduleDetaillModel'
+    delete:
+      summary: スケジュール削除
+      responses:
+        '200':
+          description: OK
+      description: スケジュール削除
+  /schedule:
+    get:
+      summary: スケジュール
+      tags: []
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  list:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ScheduleListModel'
+              examples:
+                example:
+                  value:
+                    list:
+                      - id: 1
+                        name: ラグビーW杯の全貌
+                        on_air_date: '2019-10-28 10:10'
+                        area: '三郷町,三郷町,三郷町,三郷町,三郷町,三郷町,三郷町,三郷町'
+                        status: 1
+                      - id: 2
+                        name: カーペンダーズは女性グルー
+                        on_air_date: '2019-10-28 10:10'
+                        area: '三郷町,三郷町,三郷町,三郷町,三郷町,三郷町,三郷町,三郷町'
+                        status: 2
+                      - id: 3
+                        name: ''
+                        on_air_date: '2019-10-28 10:10'
+                        area: '三郷町,三郷町,三郷町,三郷町,三郷町,三郷町,三郷町,三郷町'
+                        status: 3
+                      - id: 4
+                        name: ''
+                        on_air_date: '2019-10-28 10:10'
+                        area: '三郷町,三郷町,三郷町,三郷町,三郷町,三郷町,三郷町,三郷町'
+                        status: 4
+      description: スケジュール一覧
+    post:
+      summary: ''
+      responses:
+        '200':
+          description: OK
+      description: スケジュール追加・編集
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SchedulePostlModel'
+  /schedule/copy:
+    post:
+      summary: スケジュールコピー
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ScheduleDetaillModel'
+      description: スケジュールコピー
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: number
+                  description: コピーもとスケジュールID
+              required:
+                - id
+components:
+  schemas:
+    ScheduleDetaillModel:
+      title: ScheduleDetailModel
+      type: object
+      x-tags:
+        - schedule
+      description: ''
+      properties:
+        id:
+          type: number
+          description: idはoptional あれば編集、なければ新規
+        name:
+          type: string
+          description: 放送名
+        mode:
+          type: string
+          description: モード
+        priority:
+          type: number
+          description: 優先度
+        start_sound:
+          type: number
+          description: 開始チャイム
+        end_sound:
+          type: number
+          description: 終了チャイム
+        reservation_datetime:
+          type: string
+          description: |-
+            予約放送時のみ
+            放送時間
+        reservation_start_date:
+          type: string
+          description: |-
+            定期放送のみ
+            定期放送開始日
+        reservation_end_date:
+          type: string
+          description: |-
+            定期放送のみ
+            定期放送終了日
+        reservation_repeat_type:
+          type: number
+          description: |-
+            定期放送のみ
+            繰り返し周期
+        reservation_repeat_time:
+          type: string
+          description: |-
+            定期放送のみ
+            放送開始時間
+        on_air_flag:
+          type: number
+          description: 放送フラグ
+        conflict:
+          type: number
+          description: 衝突時
+        interrupt:
+          type: number
+          description: 被割込み時
+        files:
+          type: array
+          description: 音声ファイルバイナリデータ
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+                description: ファイル名
+              file_path:
+                type: string
+                description: ファイルパス
+            required:
+              - name
+              - file_path
+        on_air_areas:
+          type: array
+          description: |
+            放送エリア
+          items:
+            type: object
+            properties:
+              id:
+                type: number
+                description: エリアID
+            required:
+              - id
+        on_air_mode:
+          type: number
+          description: |-
+            放送モード
+            即時・予約・定期
+      required:
+        - id
+        - name
+        - mode
+        - priority
+        - start_sound
+        - end_sound
+        - on_air_flag
+        - conflict
+        - interrupt
+        - files
+        - on_air_areas
+    SchedulePostlModel:
+      title: SchedulePostModel
+      type: object
+      x-tags:
+        - schedule
+      description: ''
+      properties:
+        id:
+          type: number
+          description: idはoptional あれば編集、なければ新規
+        name:
+          type: string
+          description: 放送名
+        mode:
+          type: string
+          description: モード
+        priority:
+          type: number
+          description: 優先度
+        start_sound:
+          type: number
+          description: 開始チャイム
+        end_sound:
+          type: number
+          description: 終了チャイム
+        reservation_datetime:
+          type: string
+          description: |-
+            予約放送時のみ
+            放送時間
+        reservation_start_date:
+          type: string
+          description: |-
+            定期放送のみ
+            定期放送開始日
+        reservation_end_date:
+          type: string
+          description: |-
+            定期放送のみ
+            定期放送終了日
+        reservation_repeat_type:
+          type: number
+          description: |-
+            定期放送のみ
+            繰り返し周期
+        reservation_repeat_time:
+          type: string
+          description: |-
+            定期放送のみ
+            放送開始時間
+        on_air_flag:
+          type: number
+          description: 放送フラグ
+        conflict:
+          type: number
+          description: 衝突時
+        interrupt:
+          type: number
+          description: 被割込み時
+        files:
+          type: string
+          description: 音声ファイルバイナリデータ
+        on_air_areas:
+          type: array
+          description: |
+            放送エリア
+          items:
+            type: object
+            properties:
+              id:
+                type: number
+                description: エリアID
+            required:
+              - id
+        on_air_mode:
+          type: number
+          description: |-
+            放送モード
+            即時・予約・定期
+      required:
+        - name
+        - mode
+        - priority
+        - start_sound
+        - end_sound
+        - on_air_flag
+        - conflict
+        - interrupt
+        - files
+        - on_air_areas
+    ScheduleListModel:
+      title: ScheduleListModel
+      type: object
+      properties:
+        id:
+          type: integer
+        status:
+          type: integer
+          enum:
+            - 定期放送
+            - 待ち
+            - １回
+        area:
+          type: string
+        on_air_date:
+          type: string
+        name:
+          type: string
+      required:
+        - id
+        - name
+        - on_air_date
+        - area
+        - status
+  securitySchemes:
+    API Key - 1:
+      name: API Key
+      type: apiKey
+      in: query
