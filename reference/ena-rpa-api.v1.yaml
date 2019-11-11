@@ -11,11 +11,6 @@ servers:
   - url: 'http://localhost:3000'
 paths:
   '/schedule/{id}':
-    parameters:
-      - type: string
-        name: id
-        in: path
-        required: true
     get:
       summary: スケジュール詳細
       tags: []
@@ -26,12 +21,23 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ScheduleDetaillModel'
+      operationId: '001'
+      description: スケジュール詳細
+      parameters: []
     delete:
       summary: スケジュール削除
       responses:
         '200':
           description: OK
       description: スケジュール削除
+      operationId: '002'
+      tags: []
+    parameters:
+      - schema:
+          type: number
+        name: id
+        in: path
+        required: true
   /schedule:
     get:
       summary: スケジュール
@@ -73,6 +79,7 @@ paths:
                         area: '三郷町,三郷町,三郷町,三郷町,三郷町,三郷町,三郷町,三郷町'
                         status: 4
       description: スケジュール一覧
+      operationId: '003'
     post:
       summary: ''
       responses:
@@ -85,6 +92,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/SchedulePostlModel'
+      operationId: '004'
+      tags: []
   /schedule/copy:
     post:
       summary: スケジュールコピー
@@ -108,18 +117,17 @@ paths:
                   description: コピーもとスケジュールID
               required:
                 - id
+      operationId: '005'
+    x-tags:
+      - schedule
 components:
   schemas:
     ScheduleDetaillModel:
       title: ScheduleDetailModel
       type: object
-      x-tags:
-        - schedule
       description: ''
+      x-examples: {}
       properties:
-        id:
-          type: number
-          description: idはoptional あれば編集、なければ新規
         name:
           type: string
           description: 放送名
@@ -202,7 +210,6 @@ components:
             放送モード
             即時・予約・定期
       required:
-        - id
         - name
         - mode
         - priority
@@ -216,8 +223,6 @@ components:
     SchedulePostlModel:
       title: SchedulePostModel
       type: object
-      x-tags:
-        - schedule
       description: ''
       properties:
         id:
@@ -327,6 +332,12 @@ components:
         - on_air_date
         - area
         - status
+    pathReqId:
+      title: pathReqId
+      type: object
+      properties:
+        id:
+          type: number
   securitySchemes:
     API Key - 1:
       name: API Key
