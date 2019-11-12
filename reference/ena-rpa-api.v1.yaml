@@ -153,6 +153,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/FileRenamePostModel'
+      description: ファイル名変更
     parameters: []
   '/file/{id}':
     delete:
@@ -204,6 +205,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/SpeechCreatePostModel'
+      description: 音声合成
 components:
   schemas:
     ScheduleDetaillModel:
