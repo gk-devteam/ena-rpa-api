@@ -13,7 +13,6 @@ paths:
   '/schedule/{id}':
     get:
       summary: スケジュール詳細
-      tags: []
       responses:
         '200':
           description: OK
@@ -24,6 +23,8 @@ paths:
       operationId: '001'
       description: スケジュール詳細
       parameters: []
+      tags:
+        - schedule
     delete:
       summary: スケジュール削除
       responses:
@@ -41,7 +42,8 @@ paths:
   /schedule:
     get:
       summary: スケジュール
-      tags: []
+      tags:
+        - schedule
       responses:
         '200':
           description: ''
@@ -97,7 +99,8 @@ paths:
   /schedule/copy:
     post:
       summary: スケジュールコピー
-      tags: []
+      tags:
+        - schedule
       responses:
         '200':
           description: OK
@@ -120,6 +123,87 @@ paths:
       operationId: '005'
     x-tags:
       - schedule
+  /file:
+    get:
+      summary: 放送ファイル一覧
+      tags:
+        - file
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/FileListModel'
+      description: 放送ファイル一覧
+      operationId: '006'
+  /file/rename:
+    post:
+      summary: ファイル名変更
+      tags:
+        - file
+      responses:
+        '200':
+          description: OK
+      operationId: '007'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FileRenamePostModel'
+    parameters: []
+  '/file/{id}':
+    delete:
+      summary: ファイル削除
+      tags:
+        - file
+      responses:
+        '200':
+          description: OK
+      operationId: '9'
+      description: ファイル削除
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+  /speech/type:
+    get:
+      summary: 声色一覧
+      tags:
+        - speech
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SpeechTypeListModel'
+      description: 声色一覧
+      operationId: '010'
+  /speech/create:
+    post:
+      summary: 音声合成
+      tags:
+        - speech
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SpeechCreateModel'
+      operationId: '011'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SpeechCreatePostModel'
 components:
   schemas:
     ScheduleDetaillModel:
@@ -332,12 +416,86 @@ components:
         - on_air_date
         - area
         - status
-    pathReqId:
-      title: pathReqId
+    FileListModel:
+      title: FileListModel
       type: object
       properties:
         id:
           type: number
+        file_name:
+          type: string
+        file_path:
+          type: string
+        modified_date:
+          type: string
+      required:
+        - id
+        - file_name
+        - file_path
+        - modified_date
+    FileRenamePostModel:
+      title: FileRenamePostModel
+      type: object
+      properties:
+        id:
+          type: number
+        name:
+          type: string
+      required:
+        - id
+        - name
+    SpeechTypeListModel:
+      title: SpeechTypeListModel
+      type: object
+      properties:
+        id:
+          type: array
+          items: {}
+        name:
+          type: string
+      required:
+        - id
+        - name
+    SpeechCreateModel:
+      title: SpeechCreateModel
+      type: object
+      properties:
+        temp_id:
+          type: number
+        file_path:
+          type: string
+        pitch:
+          type: number
+        speed:
+          type: number
+        wait:
+          type: number
+      required:
+        - temp_id
+        - volume
+        - pitch
+        - speed
+        - wait
+    SpeechCreatePostModel:
+      title: SpeechCreatePotsModel
+      type: object
+      properties:
+        type:
+          type: number
+        volume:
+          type: number
+        pitch:
+          type: number
+        speed:
+          type: number
+        wait:
+          type: number
+      required:
+        - type
+        - volume
+        - pitch
+        - speed
+        - wait
   securitySchemes:
     API Key - 1:
       name: API Key
