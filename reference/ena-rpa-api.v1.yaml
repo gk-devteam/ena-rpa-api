@@ -32,7 +32,8 @@ paths:
           description: OK
       description: スケジュール削除
       operationId: '002'
-      tags: []
+      tags:
+        - schedule
     parameters:
       - schema:
           type: number
@@ -95,7 +96,8 @@ paths:
             schema:
               $ref: '#/components/schemas/SchedulePostlModel'
       operationId: '004'
-      tags: []
+      tags:
+        - schedule
   /schedule/copy:
     post:
       summary: スケジュールコピー
@@ -306,6 +308,8 @@ components:
         - interrupt
         - files
         - on_air_areas
+      x-tags:
+        - models
     SchedulePostlModel:
       title: SchedulePostModel
       type: object
@@ -394,6 +398,8 @@ components:
         - interrupt
         - files
         - on_air_areas
+      x-tags:
+        - models
     ScheduleListModel:
       title: ScheduleListModel
       type: object
@@ -418,6 +424,8 @@ components:
         - on_air_date
         - area
         - status
+      x-tags:
+        - models
     FileListModel:
       title: FileListModel
       type: object
@@ -435,6 +443,8 @@ components:
         - file_name
         - file_path
         - modified_date
+      x-tags:
+        - models
     FileRenamePostModel:
       title: FileRenamePostModel
       type: object
@@ -446,6 +456,8 @@ components:
       required:
         - id
         - name
+      x-tags:
+        - models
     SpeechTypeListModel:
       title: SpeechTypeListModel
       type: object
@@ -458,6 +470,8 @@ components:
       required:
         - id
         - name
+      x-tags:
+        - models
     SpeechCreateModel:
       title: SpeechCreateModel
       type: object
@@ -478,6 +492,8 @@ components:
         - pitch
         - speed
         - wait
+      x-tags:
+        - models
     SpeechCreatePostModel:
       title: SpeechCreatePotsModel
       type: object
@@ -498,6 +514,8 @@ components:
         - pitch
         - speed
         - wait
+      x-tags:
+        - models
   securitySchemes:
     API Key - 1:
       name: API Key
