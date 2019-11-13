@@ -208,6 +208,26 @@ paths:
             schema:
               $ref: '#/components/schemas/SpeechCreatePostModel'
       description: 音声合成
+  /speech/publish:
+    post:
+      summary: 放送登録
+      tags:
+        - speech
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SpeechPublishModel'
+      description: 放送登録
+      operationId: '0012'
 components:
   schemas:
     ScheduleDetaillModel:
@@ -516,6 +536,22 @@ components:
         - wait
       x-tags:
         - models
+    SpeechPublishModel:
+      title: SpeechPublishModel
+      type: object
+      x-tags:
+        - speech
+      properties:
+        temp_id:
+          type: number
+        file_name:
+          type: string
+        save_only:
+          type: boolean
+      required:
+        - temp_id
+        - file_name
+        - save_only
   securitySchemes:
     API Key - 1:
       name: API Key
