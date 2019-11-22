@@ -83,6 +83,17 @@ paths:
                         status: 4
       description: スケジュール一覧
       operationId: '003'
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: name
+          description: 放送名
+        - schema:
+            type: string
+          in: query
+          name: area
+          description: エリア
     post:
       summary: ''
       responses:
@@ -228,6 +239,20 @@ paths:
               $ref: '#/components/schemas/SpeechPublishModel'
       description: 放送登録
       operationId: '0012'
+  /status:
+    get:
+      summary: システム状況確認
+      tags:
+        - status
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StatusModel'
+      description: システム状況確認API
+      operationId: '0013'
 components:
   schemas:
     ScheduleDetaillModel:
@@ -552,6 +577,17 @@ components:
         - temp_id
         - file_name
         - save_only
+    StatusModel:
+      title: StatusModel
+      type: object
+      description: システム状況確認API
+      properties:
+        status:
+          type: boolean
+          description: 状態
+        message:
+          type: string
+          description: メッセージ
   securitySchemes:
     API Key - 1:
       name: API Key
