@@ -19,36 +19,6 @@ info:
 servers:
   - url: 'http://127.0.0.1:3100'
 paths:
-  '/schedule/{id}':
-    get:
-      summary: スケジュール詳細
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ScheduleDetaillModel'
-      operationId: '001'
-      description: スケジュール詳細
-      parameters: []
-      tags:
-        - schedule
-    delete:
-      summary: スケジュール削除
-      responses:
-        '200':
-          description: OK
-      description: スケジュール削除
-      operationId: '002'
-      tags:
-        - schedule
-    parameters:
-      - schema:
-          type: number
-        name: id
-        in: path
-        required: true
   /schedule:
     get:
       summary: スケジュール
@@ -118,6 +88,36 @@ paths:
       operationId: '004'
       tags:
         - schedule
+  /schedule/{id}:
+    get:
+      summary: スケジュール詳細
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ScheduleDetaillModel'
+      operationId: '001'
+      description: スケジュール詳細
+      parameters: []
+      tags:
+        - schedule
+    delete:
+      summary: スケジュール削除
+      responses:
+        '200':
+          description: OK
+      description: スケジュール削除
+      operationId: '002'
+      tags:
+        - schedule
+    parameters:
+      - schema:
+          type: number
+        name: id
+        in: path
+        required: true
   /schedule/copy:
     post:
       summary: スケジュールコピー
@@ -145,6 +145,7 @@ paths:
       operationId: '005'
     x-tags:
       - schedule
+  
   /file:
     get:
       summary: 放送ファイル一覧
@@ -177,7 +178,7 @@ paths:
               $ref: '#/components/schemas/FileRenamePostModel'
       description: ファイル名変更
     parameters: []
-  '/file/{id}':
+  /file/{id}:
     delete:
       summary: ファイル削除
       tags:
@@ -193,6 +194,7 @@ paths:
         name: id
         in: path
         required: true
+  
   /speech/type:
     get:
       summary: 声色一覧
@@ -248,6 +250,7 @@ paths:
               $ref: '#/components/schemas/SpeechPublishModel'
       description: 放送登録
       operationId: '0012'
+  
   /status:
     get:
       summary: システム状況確認
@@ -262,6 +265,7 @@ paths:
                 $ref: '#/components/schemas/StatusModel'
       description: システム状況確認API
       operationId: '0013'
+
 components:
   schemas:
     ScheduleDetaillModel:
