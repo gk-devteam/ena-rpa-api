@@ -182,6 +182,19 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StatusModel'
+              examples:
+                Connected:
+                  value:
+                    status: 1
+                    message: ''
+                Disconnected:
+                  value:
+                    status: 2
+                    message: ''
+                Initializing:
+                  value:
+                    status: 3
+                    message: ''
       description: システム状況確認API
       operationId: '0013'
   /schedule:
