@@ -1,13 +1,4 @@
 openapi: 3.0.0
-tags:
-  - name: schedule
-    description: スケジュール関連API
-  - name: file
-    description: ファイル関連API
-  - name: speech
-    description: RPA関連API
-  - name: status
-    description: API状況関連API
 info:
   title: ena-rpa
   version: '1.0'
@@ -19,76 +10,7 @@ info:
 servers:
   - url: 'http://127.0.0.1:3100'
 paths:
-  /schedule:
-    get:
-      summary: スケジュール
-      tags:
-        - schedule
-      responses:
-        '200':
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  list:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/ScheduleListModel'
-              examples:
-                example:
-                  value:
-                    list:
-                      - id: 1
-                        name: ラグビーW杯の全貌
-                        on_air_date: '2019-10-28 10:10'
-                        area: '三郷町,三郷町,三郷町,三郷町,三郷町,三郷町,三郷町,三郷町'
-                        status: 1
-                      - id: 2
-                        name: カーペンダーズは女性グルー
-                        on_air_date: '2019-10-28 10:10'
-                        area: '三郷町,三郷町,三郷町,三郷町,三郷町,三郷町,三郷町,三郷町'
-                        status: 2
-                      - id: 3
-                        name: ''
-                        on_air_date: '2019-10-28 10:10'
-                        area: '三郷町,三郷町,三郷町,三郷町,三郷町,三郷町,三郷町,三郷町'
-                        status: 3
-                      - id: 4
-                        name: ''
-                        on_air_date: '2019-10-28 10:10'
-                        area: '三郷町,三郷町,三郷町,三郷町,三郷町,三郷町,三郷町,三郷町'
-                        status: 4
-      description: スケジュール一覧
-      operationId: '003'
-      parameters:
-        - schema:
-            type: string
-          in: query
-          name: name
-          description: 放送名
-        - schema:
-            type: string
-          in: query
-          name: area
-          description: エリア
-    post:
-      summary: ''
-      responses:
-        '200':
-          description: OK
-      description: スケジュール追加・編集
-      parameters: []
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/SchedulePostlModel'
-      operationId: '004'
-      tags:
-        - schedule
-  /schedule/{id}:
+  '/schedule/{id}':
     get:
       summary: スケジュール詳細
       responses:
@@ -145,7 +67,6 @@ paths:
       operationId: '005'
     x-tags:
       - schedule
-  
   /file:
     get:
       summary: 放送ファイル一覧
@@ -178,7 +99,7 @@ paths:
               $ref: '#/components/schemas/FileRenamePostModel'
       description: ファイル名変更
     parameters: []
-  /file/{id}:
+  '/file/{id}':
     delete:
       summary: ファイル削除
       tags:
@@ -194,7 +115,6 @@ paths:
         name: id
         in: path
         required: true
-  
   /speech/type:
     get:
       summary: 声色一覧
@@ -250,7 +170,6 @@ paths:
               $ref: '#/components/schemas/SpeechPublishModel'
       description: 放送登録
       operationId: '0012'
-  
   /status:
     get:
       summary: システム状況確認
@@ -265,7 +184,75 @@ paths:
                 $ref: '#/components/schemas/StatusModel'
       description: システム状況確認API
       operationId: '0013'
-
+  /schedule:
+    get:
+      summary: スケジュール
+      tags:
+        - schedule
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  list:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ScheduleListModel'
+              examples:
+                example:
+                  value:
+                    list:
+                      - id: 1
+                        name: ラグビーW杯の全貌
+                        on_air_date: '2019-10-28 10:10'
+                        area: '三郷町,三郷町,三郷町,三郷町,三郷町,三郷町,三郷町,三郷町'
+                        status: 1
+                      - id: 2
+                        name: カーペンダーズは女性グルー
+                        on_air_date: '2019-10-28 10:10'
+                        area: '三郷町,三郷町,三郷町,三郷町,三郷町,三郷町,三郷町,三郷町'
+                        status: 2
+                      - id: 3
+                        name: 恵那市様の放送
+                        on_air_date: '2019-10-28 10:10'
+                        area: '三郷町,三郷町,三郷町,三郷町,三郷町,三郷町,三郷町,三郷町'
+                        status: 3
+                      - id: 4
+                        name: 恵那市様の放送3
+                        on_air_date: '2019-10-28 10:10'
+                        area: '三郷町,三郷町,三郷町,三郷町,三郷町,三郷町,三郷町,三郷町'
+                        status: 1
+      description: スケジュール一覧
+      operationId: '003'
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: name
+          description: 放送名
+        - schema:
+            type: string
+          in: query
+          name: area
+          description: エリア
+    post:
+      summary: ''
+      responses:
+        '200':
+          description: OK
+      description: スケジュール追加・編集
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SchedulePostlModel'
+      operationId: '004'
+      tags:
+        - schedule
 components:
   schemas:
     ScheduleDetaillModel:
@@ -461,6 +448,15 @@ components:
     ScheduleListModel:
       title: ScheduleListModel
       type: object
+      x-tags:
+        - models
+      x-examples:
+        Example:
+          id: 1
+          name: ラグビーW杯の全貌
+          on_air_date: '2019-10-28 10:10'
+          area: '三郷町,三郷町,三郷町,三郷町,三郷町,三郷町,三郷町,三郷町'
+          status: 1
       properties:
         id:
           type: integer
@@ -470,6 +466,7 @@ components:
             - 定期放送
             - 待ち
             - １回
+          description: '状態（1: 定期放送、2: 待ち、3: １回）'
         area:
           type: string
         on_air_date:
@@ -478,12 +475,10 @@ components:
           type: string
       required:
         - id
-        - name
-        - on_air_date
-        - area
         - status
-      x-tags:
-        - models
+        - area
+        - on_air_date
+        - name
     FileListModel:
       title: FileListModel
       type: object
@@ -600,8 +595,12 @@ components:
       description: システム状況確認API
       properties:
         status:
-          type: boolean
-          description: 状態
+          type: number
+          description: 状態（１：接続中、２：切断中、３：初期化中）
+          enum:
+            - 1
+            - 2
+            - 3
         message:
           type: string
           description: メッセージ
@@ -610,3 +609,12 @@ components:
       name: API Key
       type: apiKey
       in: query
+tags:
+  - name: schedule
+    description: スケジュール関連API
+  - name: file
+    description: ファイル関連API
+  - name: speech
+    description: RPA関連API
+  - name: status
+    description: API状況関連API
