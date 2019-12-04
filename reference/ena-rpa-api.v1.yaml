@@ -20,6 +20,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ScheduleDetaillModel'
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: '#/components/headers/Access-Control-Allow-Origin'
       operationId: '001'
       description: スケジュール詳細
       parameters: []
@@ -30,6 +33,9 @@ paths:
       responses:
         '200':
           description: OK
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: '#/components/headers/Access-Control-Allow-Origin'
       description: スケジュール削除
       operationId: '002'
       tags:
@@ -52,6 +58,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ScheduleDetaillModel'
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: '#/components/headers/Access-Control-Allow-Origin'
       description: スケジュールコピー
       requestBody:
         content:
@@ -81,6 +90,9 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/FileListModel'
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: '#/components/headers/Access-Control-Allow-Origin'
       description: 放送ファイル一覧
       operationId: '006'
   /file/rename:
@@ -91,6 +103,9 @@ paths:
       responses:
         '200':
           description: OK
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: '#/components/headers/Access-Control-Allow-Origin'
       operationId: '007'
       requestBody:
         content:
@@ -107,6 +122,9 @@ paths:
       responses:
         '200':
           description: OK
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: '#/components/headers/Access-Control-Allow-Origin'
       operationId: '9'
       description: ファイル削除
     parameters:
@@ -129,6 +147,9 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/SpeechTypeListModel'
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: '#/components/headers/Access-Control-Allow-Origin'
       description: 声色一覧
       operationId: '010'
   /speech/create:
@@ -143,6 +164,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SpeechCreateModel'
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: '#/components/headers/Access-Control-Allow-Origin'
       operationId: '011'
       requestBody:
         content:
@@ -163,6 +187,9 @@ paths:
               schema:
                 type: object
                 properties: {}
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: '#/components/headers/Access-Control-Allow-Origin'
       requestBody:
         content:
           application/json:
@@ -195,6 +222,9 @@ paths:
                   value:
                     status: 3
                     message: ''
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: '#/components/headers/Access-Control-Allow-Origin'
       description: システム状況確認API
       operationId: '0013'
   /schedule:
@@ -208,36 +238,33 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  list:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/ScheduleListModel'
+                $ref: '#/components/schemas/ScheduleListModel'
               examples:
                 example:
                   value:
-                    list:
-                      - id: 1
-                        name: ラグビーW杯の全貌
-                        on_air_date: '2019-10-28 10:10'
-                        area: '三郷町,三郷町,三郷町,三郷町,三郷町,三郷町,三郷町,三郷町'
-                        status: 1
-                      - id: 2
-                        name: カーペンダーズは女性グルー
-                        on_air_date: '2019-10-28 10:10'
-                        area: '三郷町,三郷町,三郷町,三郷町,三郷町,三郷町,三郷町,三郷町'
-                        status: 2
-                      - id: 3
-                        name: 恵那市様の放送
-                        on_air_date: '2019-10-28 10:10'
-                        area: '三郷町,三郷町,三郷町,三郷町,三郷町,三郷町,三郷町,三郷町'
-                        status: 3
-                      - id: 4
-                        name: 恵那市様の放送3
-                        on_air_date: '2019-10-28 10:10'
-                        area: '三郷町,三郷町,三郷町,三郷町,三郷町,三郷町,三郷町,三郷町'
-                        status: 1
+                    - id: 1
+                      name: ラグビーW杯の全貌
+                      on_air_date: '2019-10-28 10:10'
+                      area: '三郷町,三郷町,三郷町,三郷町,三郷町,三郷町,三郷町,三郷町'
+                      status: 1
+                    - id: 2
+                      name: カーペンダーズは女性グルー
+                      on_air_date: '2019-10-28 10:10'
+                      area: '三郷町,三郷町,三郷町,三郷町,三郷町,三郷町,三郷町,三郷町'
+                      status: 2
+                    - id: 3
+                      name: 恵那市様の放送
+                      on_air_date: '2019-10-28 10:10'
+                      area: '三郷町,三郷町,三郷町,三郷町,三郷町,三郷町,三郷町,三郷町'
+                      status: 3
+                    - id: 4
+                      name: 恵那市様の放送3
+                      on_air_date: '2019-10-28 10:10'
+                      area: '三郷町,三郷町,三郷町,三郷町,三郷町,三郷町,三郷町,三郷町'
+                      status: 1
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: '#/components/headers/Access-Control-Allow-Origin'
       description: スケジュール一覧
       operationId: '003'
       parameters:
@@ -256,6 +283,9 @@ paths:
       responses:
         '200':
           description: OK
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: '#/components/headers/Access-Control-Allow-Origin'
       description: スケジュール追加・編集
       parameters: []
       requestBody:
@@ -622,6 +652,12 @@ components:
       name: API Key
       type: apiKey
       in: query
+  headers:
+    Access-Control-Allow-Origin:
+      description: CORS settings
+      example: '*'
+      schema:
+        type: string
 tags:
   - name: schedule
     description: スケジュール関連API
