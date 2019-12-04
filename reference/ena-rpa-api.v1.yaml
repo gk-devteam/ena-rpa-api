@@ -1,4 +1,13 @@
 openapi: 3.0.0
+tags:
+  - name: schedule
+    description: スケジュール関連API
+  - name: file
+    description: ファイル関連API
+  - name: speech
+    description: RPA関連API
+  - name: status
+    description: API状況関連API
 info:
   title: ena-rpa
   version: '1.0'
