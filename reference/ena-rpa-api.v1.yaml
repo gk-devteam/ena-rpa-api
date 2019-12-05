@@ -88,22 +88,6 @@ paths:
       tags:
         - schedule
   /schedule/copy:
-    options:
-      summary: スケジュールコピー (OPTIONS method)
-      tags:
-        - schedule
-      responses:
-        '200':
-          description: OK
-          headers:
-            Access-Control-Allow-Origin:
-              $ref: '#/components/headers/Access-Control-Allow-Origin'
-            Access-Control-Allow-Method:
-              $ref: '#/components/headers/Access-Control-Allow-Method'
-            Access-Control-Allow-Headers:
-              $ref: '#/components/headers/Access-Control-Allow-Headers'
-      description: スケジュールコピー
-      operationId: '003a'
     post:
       summary: スケジュールコピー
       tags:
