@@ -23,7 +23,7 @@ paths:
           headers:
             Access-Control-Allow-Origin:
               $ref: '#/components/headers/Access-Control-Allow-Origin'
-      operationId: '001'
+      operationId: '004'
       description: スケジュール詳細
       parameters: []
       tags:
@@ -37,7 +37,7 @@ paths:
             Access-Control-Allow-Origin:
               $ref: '#/components/headers/Access-Control-Allow-Origin'
       description: スケジュール削除
-      operationId: '002'
+      operationId: '005'
       tags:
         - schedule
     parameters:
@@ -73,7 +73,7 @@ paths:
                   description: コピーもとスケジュールID
               required:
                 - id
-      operationId: '005'
+      operationId: '003'
     x-tags:
       - schedule
   /file:
@@ -125,7 +125,7 @@ paths:
           headers:
             Access-Control-Allow-Origin:
               $ref: '#/components/headers/Access-Control-Allow-Origin'
-      operationId: '9'
+      operationId: '008'
       description: ファイル削除
     parameters:
       - schema:
@@ -151,7 +151,7 @@ paths:
             Access-Control-Allow-Origin:
               $ref: '#/components/headers/Access-Control-Allow-Origin'
       description: 声色一覧
-      operationId: '010'
+      operationId: '009'
   /speech/create:
     post:
       summary: 音声合成
@@ -167,7 +167,7 @@ paths:
           headers:
             Access-Control-Allow-Origin:
               $ref: '#/components/headers/Access-Control-Allow-Origin'
-      operationId: '011'
+      operationId: '010'
       requestBody:
         content:
           application/json:
@@ -196,7 +196,7 @@ paths:
             schema:
               $ref: '#/components/schemas/SpeechPublishModel'
       description: 放送登録
-      operationId: '0012'
+      operationId: '0011'
   /status:
     get:
       summary: システム状況確認
@@ -226,7 +226,7 @@ paths:
             Access-Control-Allow-Origin:
               $ref: '#/components/headers/Access-Control-Allow-Origin'
       description: システム状況確認API
-      operationId: '0013'
+      operationId: '0012'
   /schedule:
     get:
       summary: スケジュール
@@ -266,7 +266,7 @@ paths:
             Access-Control-Allow-Origin:
               $ref: '#/components/headers/Access-Control-Allow-Origin'
       description: スケジュール一覧
-      operationId: '003'
+      operationId: '001'
       parameters:
         - schema:
             type: string
@@ -293,9 +293,41 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/SchedulePostlModel'
-      operationId: '004'
+      operationId: '002'
       tags:
         - schedule
+  /areas:
+    get:
+      summary: 放送範囲
+      tags:
+        - areas
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AreasListModel'
+              examples:
+                example:
+                  value:
+                    - name: 東野
+                      zones: 
+                        - id: 1
+                          name: '武並長'
+                        - id: 2
+                          name: '三郷町'
+                    - name: 中野方町
+                      zones: 
+                        - id: 1
+                          name: '飯地町'
+                        - id: 2
+                          name: '岩村町'
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: '#/components/headers/Access-Control-Allow-Origin'
+      description: 放送範囲一覧
+      operationId: '013'
 components:
   schemas:
     ScheduleDetaillModel:
@@ -647,6 +679,33 @@ components:
         message:
           type: string
           description: メッセージ
+    AreasListModel:
+      title: AreasListModel
+      type: object
+      x-tags:
+        - models
+      x-examples:
+        Example:
+          id: 1
+          name: 恵那市
+      properties:
+        name:
+          type: string
+        zones:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: integer
+              name: 
+                type: string
+            required:
+              - id
+              - name
+      required:
+        - name
+        - zones
   securitySchemes:
     API Key - 1:
       name: API Key
@@ -667,3 +726,5 @@ tags:
     description: RPA関連API
   - name: status
     description: API状況関連API
+  - name: areas
+    description: 放送範囲関連API
