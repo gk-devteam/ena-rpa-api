@@ -48,6 +48,10 @@ paths:
           headers:
             Access-Control-Allow-Origin:
               $ref: '#/components/headers/Access-Control-Allow-Origin'
+            Access-Control-Allow-Method:
+              $ref: '#/components/headers/Access-Control-Allow-Method'
+            Access-Control-Allow-Headers:
+              $ref: '#/components/headers/Access-Control-Allow-Headers'
       description: スケジュール一覧
       operationId: '001'
       parameters:
@@ -69,6 +73,10 @@ paths:
           headers:
             Access-Control-Allow-Origin:
               $ref: '#/components/headers/Access-Control-Allow-Origin'
+            Access-Control-Allow-Method:
+              $ref: '#/components/headers/Access-Control-Allow-Method'
+            Access-Control-Allow-Headers:
+              $ref: '#/components/headers/Access-Control-Allow-Headers'
       description: スケジュール追加・編集
       parameters: []
       requestBody:
@@ -80,6 +88,22 @@ paths:
       tags:
         - schedule
   /schedule/copy:
+    options:
+      summary: スケジュールコピー (OPTIONS method)
+      tags:
+        - schedule
+      responses:
+        '200':
+          description: OK
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: '#/components/headers/Access-Control-Allow-Origin'
+            Access-Control-Allow-Method:
+              $ref: '#/components/headers/Access-Control-Allow-Method'
+            Access-Control-Allow-Headers:
+              $ref: '#/components/headers/Access-Control-Allow-Headers'
+      description: スケジュールコピー
+      operationId: '003a'
     post:
       summary: スケジュールコピー
       tags:
@@ -94,6 +118,10 @@ paths:
           headers:
             Access-Control-Allow-Origin:
               $ref: '#/components/headers/Access-Control-Allow-Origin'
+            Access-Control-Allow-Method:
+              $ref: '#/components/headers/Access-Control-Allow-Method'
+            Access-Control-Allow-Headers:
+              $ref: '#/components/headers/Access-Control-Allow-Headers'
       description: スケジュールコピー
       requestBody:
         content:
@@ -122,6 +150,10 @@ paths:
           headers:
             Access-Control-Allow-Origin:
               $ref: '#/components/headers/Access-Control-Allow-Origin'
+            Access-Control-Allow-Method:
+              $ref: '#/components/headers/Access-Control-Allow-Method'
+            Access-Control-Allow-Headers:
+              $ref: '#/components/headers/Access-Control-Allow-Headers'
       operationId: '004'
       description: スケジュール詳細
       parameters: []
@@ -135,6 +167,10 @@ paths:
           headers:
             Access-Control-Allow-Origin:
               $ref: '#/components/headers/Access-Control-Allow-Origin'
+            Access-Control-Allow-Method:
+              $ref: '#/components/headers/Access-Control-Allow-Method'
+            Access-Control-Allow-Headers:
+              $ref: '#/components/headers/Access-Control-Allow-Headers'
       description: スケジュール削除
       operationId: '005'
       tags:
@@ -162,6 +198,10 @@ paths:
           headers:
             Access-Control-Allow-Origin:
               $ref: '#/components/headers/Access-Control-Allow-Origin'
+            Access-Control-Allow-Method:
+              $ref: '#/components/headers/Access-Control-Allow-Method'
+            Access-Control-Allow-Headers:
+              $ref: '#/components/headers/Access-Control-Allow-Headers'
       description: 放送ファイル一覧
       operationId: '006'
   /file/rename:
@@ -175,6 +215,10 @@ paths:
           headers:
             Access-Control-Allow-Origin:
               $ref: '#/components/headers/Access-Control-Allow-Origin'
+            Access-Control-Allow-Method:
+              $ref: '#/components/headers/Access-Control-Allow-Method'
+            Access-Control-Allow-Headers:
+              $ref: '#/components/headers/Access-Control-Allow-Headers'
       operationId: '007'
       requestBody:
         content:
@@ -194,6 +238,10 @@ paths:
           headers:
             Access-Control-Allow-Origin:
               $ref: '#/components/headers/Access-Control-Allow-Origin'
+            Access-Control-Allow-Method:
+              $ref: '#/components/headers/Access-Control-Allow-Method'
+            Access-Control-Allow-Headers:
+              $ref: '#/components/headers/Access-Control-Allow-Headers'
       operationId: '008'
       description: ファイル削除
     parameters:
@@ -219,6 +267,10 @@ paths:
           headers:
             Access-Control-Allow-Origin:
               $ref: '#/components/headers/Access-Control-Allow-Origin'
+            Access-Control-Allow-Method:
+              $ref: '#/components/headers/Access-Control-Allow-Method'
+            Access-Control-Allow-Headers:
+              $ref: '#/components/headers/Access-Control-Allow-Headers'
       description: 声色一覧
       operationId: '009'
   /speech/create:
@@ -236,6 +288,10 @@ paths:
           headers:
             Access-Control-Allow-Origin:
               $ref: '#/components/headers/Access-Control-Allow-Origin'
+            Access-Control-Allow-Method:
+              $ref: '#/components/headers/Access-Control-Allow-Method'
+            Access-Control-Allow-Headers:
+              $ref: '#/components/headers/Access-Control-Allow-Headers'
       operationId: '010'
       requestBody:
         content:
@@ -259,6 +315,10 @@ paths:
           headers:
             Access-Control-Allow-Origin:
               $ref: '#/components/headers/Access-Control-Allow-Origin'
+            Access-Control-Allow-Method:
+              $ref: '#/components/headers/Access-Control-Allow-Method'
+            Access-Control-Allow-Headers:
+              $ref: '#/components/headers/Access-Control-Allow-Headers'
       requestBody:
         content:
           application/json:
@@ -294,6 +354,10 @@ paths:
           headers:
             Access-Control-Allow-Origin:
               $ref: '#/components/headers/Access-Control-Allow-Origin'
+            Access-Control-Allow-Method:
+              $ref: '#/components/headers/Access-Control-Allow-Method'
+            Access-Control-Allow-Headers:
+              $ref: '#/components/headers/Access-Control-Allow-Headers'
       description: システム状況確認API
       operationId: '0012'
   /areas:
@@ -326,6 +390,10 @@ paths:
           headers:
             Access-Control-Allow-Origin:
               $ref: '#/components/headers/Access-Control-Allow-Origin'
+            Access-Control-Allow-Method:
+              $ref: '#/components/headers/Access-Control-Allow-Method'
+            Access-Control-Allow-Headers:
+              $ref: '#/components/headers/Access-Control-Allow-Headers'
       description: 放送範囲一覧
       operationId: '013'
 components:
@@ -715,6 +783,16 @@ components:
     Access-Control-Allow-Origin:
       description: CORS settings
       example: '*'
+      schema:
+        type: string
+    Access-Control-Allow-Method:
+      description: CORS settings
+      example: 'GET, POST, DELETE, HEAD'
+      schema:
+        type: string
+    Access-Control-Allow-Headers: 
+      description: CORS settings
+      example: 'Origin, Accept, Content-Type, X-Requested-With, X-CSRF-Token'
       schema:
         type: string
 tags:
