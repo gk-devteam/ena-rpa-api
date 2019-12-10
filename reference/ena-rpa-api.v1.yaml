@@ -147,24 +147,21 @@ paths:
       summary: スケジュール削除
       responses:
         '200':
-          description: OK
-          headers:
-            Access-Control-Allow-Origin:
-              $ref: '#/components/headers/Access-Control-Allow-Origin'
-            Access-Control-Allow-Method:
-              $ref: '#/components/headers/Access-Control-Allow-Method'
-            Access-Control-Allow-Headers:
-              $ref: '#/components/headers/Access-Control-Allow-Headers'
+          description: Deleted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ScheduleDeleteModel'
       description: スケジュール削除
       operationId: '005'
       tags:
         - schedule
     parameters:
-      - schema:
-          type: number
+      - in: path
         name: id
-        in: path
         required: true
+        schema:
+          type: integer
   /file:
     get:
       summary: 放送ファイル一覧
@@ -179,6 +176,29 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/FileListModel'
+              examples:
+                example:
+                  value:
+                    - id: 1
+                      file_name: 'file_1.wav'
+                      file_path: 'https://opengameart.org/sites/default/files/bodyimpact_jack_01.wav'
+                      modified_date: '2019-10-28 10:10'
+                      is_use: false
+                    - id: 2
+                      file_name: 'file_2.wav'
+                      file_path: 'https://opengameart.org/sites/default/files/boing_jack_01.wav'
+                      modified_date: '2019-10-28 10:10'
+                      is_use: true
+                    - id: 3
+                      file_name: 'file_3.wav'
+                      file_path: 'https://opengameart.org/sites/default/files/death_jack_02.wav'
+                      modified_date: '2019-10-28 10:10'
+                      is_use: false
+                    - id: 4
+                      file_name: 'file_4.wav'
+                      file_path: 'https://opengameart.org/sites/default/files/get_armour.wav'
+                      modified_date: '2019-10-28 10:10'
+                      is_use: false
           headers:
             Access-Control-Allow-Origin:
               $ref: '#/components/headers/Access-Control-Allow-Origin'
@@ -226,7 +246,7 @@ paths:
               $ref: '#/components/headers/Access-Control-Allow-Method'
             Access-Control-Allow-Headers:
               $ref: '#/components/headers/Access-Control-Allow-Headers'
-      operationId: '008'
+      operationId: 8
       description: ファイル削除
     parameters:
       - schema:
@@ -256,7 +276,7 @@ paths:
             Access-Control-Allow-Headers:
               $ref: '#/components/headers/Access-Control-Allow-Headers'
       description: 声色一覧
-      operationId: '009'
+      operationId: 9
   /speech/create:
     post:
       summary: 音声合成
@@ -360,17 +380,17 @@ paths:
                 example:
                   value:
                     - name: 東野
-                      zones: 
+                      zones:
                         - id: 1
-                          name: '武並長'
+                          name: 武並長
                         - id: 2
-                          name: '三郷町'
+                          name: 三郷町
                     - name: 中野方町
-                      zones: 
+                      zones:
                         - id: 1
-                          name: '飯地町'
+                          name: 飯地町
                         - id: 2
-                          name: '岩村町'
+                          name: 岩村町
           headers:
             Access-Control-Allow-Origin:
               $ref: '#/components/headers/Access-Control-Allow-Origin'
@@ -606,6 +626,17 @@ components:
         - on_air_areas
       x-tags:
         - models
+    ScheduleDeleteModel:
+      title: ScheduleDetailModel
+      type: object
+      description: ''
+      x-examples:
+        Example:
+          message: Deleted
+      properties:
+        message:
+          type: string
+          description: response message
     FileListModel:
       title: FileListModel
       type: object
@@ -618,6 +649,9 @@ components:
           type: string
         file_path:
           type: string
+        file_duration:
+          type: integer
+          description: 再生時間（秒数）
         modified_date:
           type: string
         is_use:
@@ -627,6 +661,7 @@ components:
         - id
         - file_name
         - file_path
+        - file_duration
         - modified_date
         - is_use
     FileRenamePostModel:
@@ -750,7 +785,7 @@ components:
             properties:
               id:
                 type: integer
-              name: 
+              name:
                 type: string
             required:
               - id
@@ -774,7 +809,7 @@ components:
       example: 'GET, POST, DELETE, HEAD'
       schema:
         type: string
-    Access-Control-Allow-Headers: 
+    Access-Control-Allow-Headers:
       description: CORS settings
       example: 'Origin, Accept, Content-Type, X-Requested-With, X-CSRF-Token'
       schema:
