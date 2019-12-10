@@ -182,21 +182,25 @@ paths:
                     - id: 1
                       file_name: 'file_1.wav'
                       file_path: 'https://opengameart.org/sites/default/files/bodyimpact_jack_01.wav'
+                      file_duration: 75
                       modified_date: '2019-10-28 10:10'
                       is_use: false
                     - id: 2
                       file_name: 'file_2.wav'
                       file_path: 'https://opengameart.org/sites/default/files/boing_jack_01.wav'
+                      file_duration: 126
                       modified_date: '2019-10-28 10:10'
                       is_use: true
                     - id: 3
                       file_name: 'file_3.wav'
                       file_path: 'https://opengameart.org/sites/default/files/death_jack_02.wav'
+                      file_duration: 467
                       modified_date: '2019-10-28 10:10'
                       is_use: false
                     - id: 4
                       file_name: 'file_4.wav'
                       file_path: 'https://opengameart.org/sites/default/files/get_armour.wav'
+                      file_duration: 34
                       modified_date: '2019-10-28 10:10'
                       is_use: false
           headers:
