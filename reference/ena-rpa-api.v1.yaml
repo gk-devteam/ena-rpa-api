@@ -8,7 +8,7 @@ info:
     url: 'https://goldkey.co.jp'
     email: m-mizuno@goldkey.co.jp
 servers:
-  - url: 'https://enarpa-api.herokuapp.com/'
+  - url: 'https://enarpa-api.herokuapp.com'
 paths:
   /schedule:
     get:
@@ -242,7 +242,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/FileDeleteModel'
-      operationId: 008
+      operationId: '008'
       description: ファイル削除
       tags:
         - file
@@ -285,7 +285,7 @@ paths:
             Access-Control-Allow-Headers:
               $ref: '#/components/headers/Access-Control-Allow-Headers'
       description: 声色一覧
-      operationId: 009
+      operationId: '009'
   /speech/create:
     post:
       summary: 音声合成
@@ -338,7 +338,7 @@ paths:
             schema:
               $ref: '#/components/schemas/SpeechPublishModel'
       description: 放送登録
-      operationId: '0011'
+      operationId: '011'
   /status:
     get:
       summary: システム状況確認
@@ -372,7 +372,7 @@ paths:
             Access-Control-Allow-Headers:
               $ref: '#/components/headers/Access-Control-Allow-Headers'
       description: システム状況確認API
-      operationId: '0012'
+      operationId: '012'
   /areas:
     get:
       summary: 放送範囲
