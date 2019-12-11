@@ -9,7 +9,7 @@
   "scripts": {
     "start": "prism mock ./reference/ena-rpa-api.v1.yaml"
   },
-  "devDependencies": {
+  "dependencies": {
     "@stoplight/prism-cli": "^3.2.1"
   }
 }
