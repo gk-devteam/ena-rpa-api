@@ -8,7 +8,7 @@ info:
     url: 'https://goldkey.co.jp'
     email: m-mizuno@goldkey.co.jp
 servers:
-  - url: 'http://127.0.0.1:3100'
+  - url: 'https://enarpa-api.herokuapp.com/'
 paths:
   /schedule:
     get:
@@ -180,25 +180,25 @@ paths:
                 example:
                   value:
                     - id: 1
-                      file_name: 'file_1.wav'
+                      file_name: file_1.wav
                       file_path: 'https://www.bensound.com/bensound-music/bensound-creativeminds.mp3'
                       file_duration: 147
                       modified_date: '2019-10-28 10:10'
                       is_use: false
                     - id: 2
-                      file_name: 'file_2.wav'
+                      file_name: file_2.wav
                       file_path: 'https://opengameart.org/sites/default/files/boing_jack_01.wav'
                       file_duration: 126
                       modified_date: '2019-10-28 10:10'
                       is_use: true
                     - id: 3
-                      file_name: 'file_3.wav'
+                      file_name: file_3.wav
                       file_path: 'https://opengameart.org/sites/default/files/death_jack_02.wav'
                       file_duration: 467
                       modified_date: '2019-10-28 10:10'
                       is_use: false
                     - id: 4
-                      file_name: 'file_4.wav'
+                      file_name: file_4.wav
                       file_path: 'https://opengameart.org/sites/default/files/get_armour.wav'
                       file_duration: 4671
                       modified_date: '2019-10-28 10:10'
@@ -242,8 +242,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/FileDeleteModel'
+      operationId: 008
       description: ファイル削除
-      operationId: '008'
       tags:
         - file
     parameters:
@@ -285,7 +285,7 @@ paths:
             Access-Control-Allow-Headers:
               $ref: '#/components/headers/Access-Control-Allow-Headers'
       description: 声色一覧
-      operationId: '009'
+      operationId: 009
   /speech/create:
     post:
       summary: 音声合成
@@ -686,17 +686,6 @@ components:
         - name
       x-tags:
         - models
-    FileRenamePostResponseModel:
-      title: FileRenamePostResponseModel
-      type: object
-      description: ''
-      x-examples:
-        Example:
-          message: Posted
-      properties:
-        message:
-          type: string
-          description: response message
     FileDeleteModel:
       title: FileDeleteModel
       type: object
@@ -824,6 +813,17 @@ components:
       required:
         - name
         - zones
+    FileRenamePostResponseModel:
+      title: FileRenamePostResponseModel
+      type: object
+      description: ''
+      x-examples:
+        Example:
+          message: Posted
+      properties:
+        message:
+          type: string
+          description: response message
   securitySchemes:
     API Key - 1:
       name: API Key
