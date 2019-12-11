@@ -181,8 +181,8 @@ paths:
                   value:
                     - id: 1
                       file_name: 'file_1.wav'
-                      file_path: 'https://opengameart.org/sites/default/files/bodyimpact_jack_01.wav'
-                      file_duration: 75
+                      file_path: 'https://www.bensound.com/bensound-music/bensound-creativeminds.mp3'
+                      file_duration: 147
                       modified_date: '2019-10-28 10:10'
                       is_use: false
                     - id: 2
@@ -200,7 +200,7 @@ paths:
                     - id: 4
                       file_name: 'file_4.wav'
                       file_path: 'https://opengameart.org/sites/default/files/get_armour.wav'
-                      file_duration: 34
+                      file_duration: 4671
                       modified_date: '2019-10-28 10:10'
                       is_use: false
           headers:
@@ -220,13 +220,10 @@ paths:
       responses:
         '200':
           description: OK
-          headers:
-            Access-Control-Allow-Origin:
-              $ref: '#/components/headers/Access-Control-Allow-Origin'
-            Access-Control-Allow-Method:
-              $ref: '#/components/headers/Access-Control-Allow-Method'
-            Access-Control-Allow-Headers:
-              $ref: '#/components/headers/Access-Control-Allow-Headers'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FileRenamePostResponseModel'
       operationId: '007'
       requestBody:
         content:
@@ -238,20 +235,17 @@ paths:
   '/file/{id}':
     delete:
       summary: ファイル削除
-      tags:
-        - file
       responses:
         '200':
-          description: OK
-          headers:
-            Access-Control-Allow-Origin:
-              $ref: '#/components/headers/Access-Control-Allow-Origin'
-            Access-Control-Allow-Method:
-              $ref: '#/components/headers/Access-Control-Allow-Method'
-            Access-Control-Allow-Headers:
-              $ref: '#/components/headers/Access-Control-Allow-Headers'
-      operationId: 8
+          description: Deleted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FileDeleteModel'
       description: ファイル削除
+      operationId: '008'
+      tags:
+        - file
     parameters:
       - schema:
           type: string
@@ -272,6 +266,17 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/SpeechTypeListModel'
+              examples:
+                example:
+                  value:
+                    - id: 1
+                      name: タイプ_1
+                    - id: 2
+                      name: タイプ_2
+                    - id: 3
+                      name: タイプ_3
+                    - id: 4
+                      name: タイプ_4
           headers:
             Access-Control-Allow-Origin:
               $ref: '#/components/headers/Access-Control-Allow-Origin'
@@ -280,7 +285,7 @@ paths:
             Access-Control-Allow-Headers:
               $ref: '#/components/headers/Access-Control-Allow-Headers'
       description: 声色一覧
-      operationId: 9
+      operationId: '009'
   /speech/create:
     post:
       summary: 音声合成
@@ -631,7 +636,7 @@ components:
       x-tags:
         - models
     ScheduleDeleteModel:
-      title: ScheduleDetailModel
+      title: ScheduleDeleteModel
       type: object
       description: ''
       x-examples:
@@ -681,6 +686,28 @@ components:
         - name
       x-tags:
         - models
+    FileRenamePostResponseModel:
+      title: FileRenamePostResponseModel
+      type: object
+      description: ''
+      x-examples:
+        Example:
+          message: Posted
+      properties:
+        message:
+          type: string
+          description: response message
+    FileDeleteModel:
+      title: FileDeleteModel
+      type: object
+      description: ''
+      x-examples:
+        Example:
+          message: Deleted
+      properties:
+        message:
+          type: string
+          description: response message
     SpeechTypeListModel:
       title: SpeechTypeListModel
       type: object
