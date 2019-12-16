@@ -11,6 +11,8 @@ servers:
   - url: 'https://enarpa-api.herokuapp.com'
   - url: 'http://127.0.0.1:4010'
     description: ''
+  - url: 'http://127.0.0.1:3100'
+    description: ''
 paths:
   /schedule:
     get:
@@ -244,7 +246,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/FileDeleteModel'
-      operationId: '008'
+      operationId: '8'
       description: ファイル削除
       tags:
         - file
