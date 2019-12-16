@@ -9,6 +9,8 @@ info:
     email: m-mizuno@goldkey.co.jp
 servers:
   - url: 'https://enarpa-api.herokuapp.com'
+  - url: 'http://127.0.0.1:4010'
+    description: ''
 paths:
   /schedule:
     get:
@@ -242,7 +244,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/FileDeleteModel'
-      operationId: '008'
+      operationId: 8
       description: ファイル削除
       tags:
         - file
@@ -285,7 +287,7 @@ paths:
             Access-Control-Allow-Headers:
               $ref: '#/components/headers/Access-Control-Allow-Headers'
       description: 声色一覧
-      operationId: '009'
+      operationId: 9
   /speech/create:
     post:
       summary: 音声合成
@@ -409,6 +411,11 @@ paths:
               $ref: '#/components/headers/Access-Control-Allow-Headers'
       description: 放送範囲一覧
       operationId: '013'
+      parameters:
+        - schema:
+            type: boolean
+          in: query
+          name: _dynamic
 components:
   schemas:
     ScheduleListModel:
@@ -736,6 +743,8 @@ components:
     SpeechCreatePostModel:
       title: SpeechCreatePotsModel
       type: object
+      x-tags:
+        - models
       properties:
         type:
           type: number
@@ -747,14 +756,14 @@ components:
           type: number
         wait:
           type: number
+        speech:
+          type: string
       required:
         - type
         - volume
         - pitch
         - speed
         - wait
-      x-tags:
-        - models
     SpeechPublishModel:
       title: SpeechPublishModel
       type: object
