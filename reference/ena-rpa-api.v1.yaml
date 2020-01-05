@@ -135,6 +135,29 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ScheduleDetaillModel'
+              examples:
+                Example:
+                  value:
+                    name: ラグビーW杯の全貌
+                    mode: 一般放送
+                    priority: 1
+                    start_sound: 0
+                    end_sound: 0
+                    reservation_datetime: string
+                    reservation_start_date: string
+                    reservation_end_date: string
+                    reservation_repeat_type: 0
+                    reservation_repeat_time: string
+                    on_air_flag: 1
+                    conflict: 0
+                    interrupt: 0
+                    files:
+                      - name: 恵那市様音声.wav
+                        file_path: 'https://www.bensound.com/bensound-music/bensound-creativeminds.mp3'
+                    on_air_areas:
+                      - id: 1
+                      - id: 4
+                    on_air_mode: 0
           headers:
             Access-Control-Allow-Origin:
               $ref: '#/components/headers/Access-Control-Allow-Origin'
@@ -289,7 +312,7 @@ paths:
             Access-Control-Allow-Headers:
               $ref: '#/components/headers/Access-Control-Allow-Headers'
       description: 声色一覧
-      operationId: '009'
+      operationId: '9'
   /speech/create:
     post:
       summary: 音声合成
@@ -422,9 +445,9 @@ paths:
                           name: 三郷町
                     - name: 中野方町
                       zones:
-                        - id: 1
+                        - id: 3
                           name: 飯地町
-                        - id: 2
+                        - id: 4
                           name: 岩村町
           headers:
             Access-Control-Allow-Origin:
