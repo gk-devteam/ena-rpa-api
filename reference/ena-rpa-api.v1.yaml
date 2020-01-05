@@ -135,29 +135,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ScheduleDetaillModel'
-              examples:
-                Example:
-                  value:
-                    name: ラグビーW杯の全貌
-                    mode: 一般放送
-                    priority: 1
-                    start_sound: 0
-                    end_sound: 0
-                    reservation_datetime: string
-                    reservation_start_date: string
-                    reservation_end_date: string
-                    reservation_repeat_type: 0
-                    reservation_repeat_time: string
-                    on_air_flag: 1
-                    conflict: 0
-                    interrupt: 0
-                    files:
-                      - name: 恵那市様音声.wav
-                        file_path: 'https://www.bensound.com/bensound-music/bensound-creativeminds.mp3'
-                    on_air_areas:
-                      - id: 1
-                      - id: 4
-                    on_air_mode: 0
           headers:
             Access-Control-Allow-Origin:
               $ref: '#/components/headers/Access-Control-Allow-Origin'
@@ -593,7 +570,32 @@ components:
       title: ScheduleDetailModel
       type: object
       description: ''
-      x-examples: {}
+      x-examples: 
+        Example:
+          name: ラグビーW杯の全貌
+          mode: 一般放送
+          priority: 1
+          start_sound: 0
+          end_sound: 0
+          reservation_datetime: string
+          reservation_start_date: string
+          reservation_end_date: string
+          reservation_repeat_type: 0
+          reservation_repeat_time: string
+          on_air_flag: 1
+          conflict: 0
+          interrupt: 0
+          files:
+            - file_name: 恵那市様音声.wav
+              file_duration: 147
+              file_path: 'https://www.bensound.com/bensound-music/bensound-creativeminds.mp3'
+            - file_name: file_2.wav
+              file_duration: 126
+              file_path: 'https://opengameart.org/sites/default/files/boing_jack_01.wav'
+          on_air_areas:
+            - id: 1
+            - id: 4
+          on_air_mode: 0
       properties:
         name:
           type: string
@@ -650,9 +652,12 @@ components:
           items:
             type: object
             properties:
-              name:
+              file_name:
                 type: string
                 description: ファイル名
+              file_duration:
+                type: number
+                description: 再生時間
               file_path:
                 type: string
                 description: ファイルパス
