@@ -159,8 +159,8 @@ paths:
                         file_duration: 126
                         file_path: 'https://opengameart.org/sites/default/files/boing_jack_01.wav'
                     on_air_areas:
-                      - id: 1
-                      - id: 4
+                      - 1
+                      - 4
                     on_air_mode: 0
           headers:
             Access-Control-Allow-Origin:
@@ -565,16 +565,9 @@ components:
           description: 音声ファイルバイナリデータ
         on_air_areas:
           type: array
-          description: |
-            放送エリア
+          description: 放送エリアID
           items:
-            type: object
-            properties:
-              id:
-                type: number
-                description: エリアID
-            required:
-              - id
+            type: number
         on_air_mode:
           type: number
           description: |-
@@ -601,17 +594,18 @@ components:
         Example:
           name: ラグビーW杯の全貌
           mode: 一般放送
-          priority: 1
-          start_sound: 0
-          end_sound: 0
-          reservation_datetime: string
-          reservation_start_date: string
-          reservation_end_date: string
-          reservation_repeat_type: 0
-          reservation_repeat_time: string
+          priority: 2
+          start_sound: test
+          end_sound: 終了チャイム
+          on_air_mode: 0
+          reservation_datetime: null
+          reservation_start_date: null
+          reservation_end_date: null
+          reservation_repeat_type: null
+          reservation_repeat_time: null
           on_air_flag: 1
-          conflict: 0
-          interrupt: 0
+          conflict: 2
+          interrupt: 5
           files:
             - file_name: 恵那市様音声.wav
               file_duration: 147
@@ -622,7 +616,6 @@ components:
           on_air_areas:
             - id: 1
             - id: 4
-          on_air_mode: 0
       properties:
         name:
           type: string
