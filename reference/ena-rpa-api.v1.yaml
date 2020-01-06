@@ -144,9 +144,9 @@ paths:
                     start_sound: 開始チャイム
                     end_sound: test
                     on_air_mode: 0
-                    reservation_datetime: 2020/01/01 10:00
-                    reservation_start_date: 2020/01/01
-                    reservation_end_date: 2020/01/31
+                    reservation_datetime: 2020-01-01 10:00
+                    reservation_start_date: 2020-01-01
+                    reservation_end_date: 2020-01-31
                     reservation_repeat_type: 毎月
                     reservation_repeat_time: 13:00
                     on_air_flag: 1
