@@ -781,8 +781,7 @@ components:
       type: object
       properties:
         id:
-          type: array
-          items: {}
+          type: number
         name:
           type: string
       required:
