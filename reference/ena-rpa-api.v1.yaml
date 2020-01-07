@@ -185,7 +185,7 @@ paths:
                     on_air_areas:
                       - 1
                       - 4
-                    on_air_mode: 0
+                    on_air_mode: 1
           headers:
             Access-Control-Allow-Origin:
               $ref: '#/components/headers/Access-Control-Allow-Origin'
