@@ -87,7 +87,31 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/SchedulePostlModel'
+              $ref: '#/components/schemas/SchedulePostModel'
+            examples:
+              Example:
+                value:
+                  id: null
+                  name: ラグビーW杯の全貌
+                  mode: 一般放送
+                  priority: 1
+                  start_sound: 開始チャイム
+                  end_sound: test
+                  reservation_datetime: '2020-01-01 10:00'
+                  reservation_start_date: '2020-01-01'
+                  reservation_end_date: '2020-01-31'
+                  reservation_repeat_type: 毎月
+                  reservation_repeat_time: '13:00'
+                  on_air_flag: 1
+                  conflict: 2
+                  interrupt: 5
+                  files:
+                    - aaaa
+                  on_air_areas:
+                    - 1
+                    - 4
+                  on_air_mode: 0
+        description: ''
       operationId: '002'
       tags:
         - schedule
@@ -137,18 +161,17 @@ paths:
                 $ref: '#/components/schemas/ScheduleDetaillModel'
               examples:
                 Example:
-                  value: 
+                  value:
                     name: ラグビーW杯の全貌
                     mode: 一般放送
                     priority: 1
                     start_sound: 開始チャイム
                     end_sound: test
-                    on_air_mode: 0
-                    reservation_datetime: 2020-01-01 10:00
-                    reservation_start_date: 2020-01-01
-                    reservation_end_date: 2020-01-31
+                    reservation_datetime: '2020-01-01 10:00'
+                    reservation_start_date: '2020-01-01'
+                    reservation_end_date: '2020-01-31'
                     reservation_repeat_type: 毎月
-                    reservation_repeat_time: 13:00
+                    reservation_repeat_time: '13:00'
                     on_air_flag: 1
                     conflict: 2
                     interrupt: 5
@@ -162,6 +185,7 @@ paths:
                     on_air_areas:
                       - 1
                       - 4
+                    on_air_mode: 0
           headers:
             Access-Control-Allow-Origin:
               $ref: '#/components/headers/Access-Control-Allow-Origin'
@@ -503,7 +527,7 @@ components:
         - area
         - on_air_date
         - name
-    SchedulePostlModel:
+    SchedulePostModel:
       title: SchedulePostModel
       type: object
       description: ''
@@ -521,10 +545,10 @@ components:
           type: number
           description: 優先度
         start_sound:
-          type: number
+          type: string
           description: 開始チャイム
         end_sound:
-          type: number
+          type: string
           description: 終了チャイム
         reservation_datetime:
           type: string
@@ -561,13 +585,19 @@ components:
           type: number
           description: 被割込み時
         files:
-          type: string
+          type: array
           description: 音声ファイルバイナリデータ
+          items:
+            type: string
+            format: binary
+            description: バイナリーファイル
         on_air_areas:
           type: array
-          description: 放送エリアID
+          description: |
+            放送エリア
           items:
             type: number
+            description: エリアID
         on_air_mode:
           type: number
           description: |-
@@ -586,6 +616,28 @@ components:
         - on_air_areas
       x-tags:
         - models
+      x-examples:
+        Example:
+          id: null
+          name: ラグビーW杯の全貌
+          mode: 一般放送
+          priority: 2
+          start_sound: test
+          end_sound: 終了チャイム
+          on_air_mode: 0
+          reservation_datetime: null
+          reservation_start_date: null
+          reservation_end_date: null
+          reservation_repeat_type: null
+          reservation_repeat_time: null
+          on_air_flag: 1
+          conflict: 2
+          interrupt: 5
+          files:
+            - aaaaaa
+          on_air_areas:
+            - 1
+            - 4
     ScheduleDetaillModel:
       title: ScheduleDetailModel
       type: object
@@ -690,12 +742,12 @@ components:
             放送エリア
           items:
             type: object
+            required:
+              - id
             properties:
               id:
                 type: number
                 description: エリアID
-            required:
-              - id
         on_air_mode:
           type: number
           description: |-
