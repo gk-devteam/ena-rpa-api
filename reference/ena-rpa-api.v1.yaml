@@ -176,6 +176,9 @@ paths:
                     conflict: 2
                     interrupt: 5
                     files:
+                      - file_name: file_0.wav
+                        file_duration: 1
+                        file_path: 'https://opengameart.org/sites/default/files/boing_jack_01.wav'
                       - file_name: file_1.wav
                         file_duration: 56
                         file_path: 'https://www.bensound.com/bensound-music/bensound-freakyhalloween.mp3'
