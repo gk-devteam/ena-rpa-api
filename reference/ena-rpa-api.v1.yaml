@@ -185,12 +185,12 @@ paths:
                       - file_name: file_0_2.wav
                         file_duration: 7
                         file_path: 'https://freesound.org/data/previews/265/265303_181941-lq.mp3'
-                      - file_name: file_1.wav
-                        file_duration: 56
-                        file_path: 'https://www.bensound.com/bensound-music/bensound-freakyhalloween.mp3'
-                      - file_name: file_2.wav
-                        file_duration: 89
-                        file_path: 'https://www.bensound.com/bensound-music/bensound-clearday.mp3'
+                      # - file_name: file_1.wav
+                      #   file_duration: 56
+                      #   file_path: 'https://www.bensound.com/bensound-music/bensound-freakyhalloween.mp3'
+                      # - file_name: file_2.wav
+                      #   file_duration: 89
+                      #   file_path: 'https://www.bensound.com/bensound-music/bensound-clearday.mp3'
                       
                     on_air_areas:
                       - 1
