@@ -176,9 +176,12 @@ paths:
                     conflict: 2
                     interrupt: 5
                     files:
-                      - file_name: file_2.wav
-                        file_duration: 126
+                      - file_name: file_1.wav
+                        file_duration: 1
                         file_path: 'https://opengameart.org/sites/default/files/boing_jack_01.wav'
+                      - file_name: file_2.wav
+                        file_duration: 1
+                        file_path: 'https://opengameart.org/sites/default/files/get_armour.wav'
                       - file_name: 恵那市様音声.wav
                         file_duration: 147
                         file_path: 'https://www.bensound.com/bensound-music/bensound-creativeminds.mp3'
