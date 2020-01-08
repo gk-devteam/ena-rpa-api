@@ -176,7 +176,13 @@ paths:
                     conflict: 2
                     interrupt: 5
                     files:
-                      - file_name: file_0.wav
+                      - file_name: file_0_0.wav
+                        file_duration: 7
+                        file_path: 'https://freesound.org/data/previews/265/265303_181941-lq.mp3'
+                      - file_name: file_0_1.wav
+                        file_duration: 7
+                        file_path: 'https://freesound.org/data/previews/265/265303_181941-lq.mp3'
+                      - file_name: file_0_2.wav
                         file_duration: 7
                         file_path: 'https://freesound.org/data/previews/265/265303_181941-lq.mp3'
                       - file_name: file_1.wav
