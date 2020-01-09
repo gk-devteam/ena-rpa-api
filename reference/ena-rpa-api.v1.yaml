@@ -176,19 +176,24 @@ paths:
                     conflict: 2
                     interrupt: 5
                     files:
-                      - file_name: file_0_0.wav
+                      - file_id: 0
+                        file_name: file_0_0.wav
                         file_duration: 7
                         file_path: 'https://freesound.org/data/previews/265/265303_181941-lq.mp3'
                       - file_name: file_0_1.wav
+                        file_id: 1
                         file_duration: 7
                         file_path: 'https://freesound.org/data/previews/501/501247_9497060-lq.mp3'
                       - file_name: file_0_2.wav
+                        file_id: 2
                         file_duration: 7
                         file_path: 'https://freesound.org/data/previews/265/265303_181941-lq.mp3'
                       # - file_name: file_1.wav
                       #   file_duration: 56
+                      #   file_id: 4
                       #   file_path: 'https://www.bensound.com/bensound-music/bensound-freakyhalloween.mp3'
                       # - file_name: file_2.wav
+                      #   file_id: 5
                       #   file_duration: 89
                       #   file_path: 'https://www.bensound.com/bensound-music/bensound-clearday.mp3'
                       
@@ -363,7 +368,19 @@ paths:
             application/json:
               schema:
                 type: object
-                properties: {}
+                properties: 
+                  file_id:
+                    type: number
+                    example: 1
+                  file_name:
+                    type: string
+                    example: file.wav
+                  file_duration:
+                    type: number
+                    example: 7
+                  file_path:
+                    type: string
+                    example: https://freesound.org/data/previews/265/265303_181941-lq.mp3
           headers:
             Access-Control-Allow-Origin:
               $ref: '#/components/headers/Access-Control-Allow-Origin'
@@ -686,6 +703,9 @@ components:
           items:
             type: object
             properties:
+              file_id:
+                type: number
+                description: id
               file_path:
                 type: string
                 description: ファイルパス
