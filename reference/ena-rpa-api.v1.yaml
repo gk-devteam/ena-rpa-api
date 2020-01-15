@@ -244,25 +244,25 @@ paths:
                       file_name: file_1.wav
                       file_path: 'https://www.bensound.com/bensound-music/bensound-creativeminds.mp3'
                       file_duration: 147
-                      modified_date: '2019-10-28 10:10'
+                      modifid_date: '2019-10-28 10:10'
                       is_use: false
                     - id: 2
                       file_name: file_2.wav
                       file_path: 'https://opengameart.org/sites/default/files/boing_jack_01.wav'
                       file_duration: 126
-                      modified_date: '2019-10-28 10:10'
+                      modifid_date: '2019-10-28 10:10'
                       is_use: true
                     - id: 3
                       file_name: file_3.wav
                       file_path: 'https://opengameart.org/sites/default/files/death_jack_02.wav'
                       file_duration: 467
-                      modified_date: '2019-10-28 10:10'
+                      modifid_date: '2019-10-28 10:10'
                       is_use: false
                     - id: 4
                       file_name: file_4.wav
                       file_path: 'https://opengameart.org/sites/default/files/get_armour.wav'
                       file_duration: 4671
-                      modified_date: '2019-10-28 10:10'
+                      modifid_date: '2019-10-28 10:10'
                       is_use: false
           headers:
             Access-Control-Allow-Origin:
@@ -2211,7 +2211,7 @@ components:
         file_duration:
           type: integer
           description: 再生時間（秒数）
-        modified_date:
+        modifid_date:
           type: string
         is_use:
           type: boolean
