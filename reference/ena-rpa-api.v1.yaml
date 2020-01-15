@@ -173,8 +173,8 @@ paths:
                     reservation_repeat_type: 1
                     reservation_repeat_time: '2:13:00'
                     on_air_flag: 1
-                    conflict: 2
-                    interrupt: 5
+                    conflict: 0
+                    interrupt: 1
                     files:
                       - file_id: 0
                         file_name: file_0_0.wav
