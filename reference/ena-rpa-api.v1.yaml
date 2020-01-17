@@ -106,7 +106,8 @@ paths:
                   conflict: 2
                   interrupt: 5
                   files:
-                    - aaaa
+                    - aaaa.wav
+                    - bbbb.wav
                   on_air_areas:
                     - 1
                     - 4
@@ -2049,7 +2050,8 @@ components:
           conflict: 2
           interrupt: 5
           files:
-            - aaaaaa
+            - aaaaaa.wav
+            - bbbbb.wav
           on_air_areas:
             - 1
             - 4
