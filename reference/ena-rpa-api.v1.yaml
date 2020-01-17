@@ -2002,11 +2002,10 @@ components:
           description: 被割込み時
         files:
           type: array
-          description: 音声ファイルバイナリデータ
+          description: 音声ファイル名の配列
           items:
             type: string
-            format: binary
-            description: バイナリーファイル
+            description: 音声ファイル名
         on_air_areas:
           type: array
           description: |
